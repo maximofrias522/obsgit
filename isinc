@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Configuración
+SOURCE="Drive:/UTN-P/ISI-II/"
+DEST="/home/mfrias/ISI-II/"
+
+# Ejecutar sincronización
+echo "Sincronizando $SOURCE → $DEST"
+rclone sync "$SOURCE" "$DEST" --progress
+
+# Mostrar resultado
+if [ $? -eq 0 ]; then
+    echo -e "\e[32mSincronización completada con éxito\e[0m"
+else
+    echo -e "\e[31mError durante la sincronización\e[0m" >&2
+    exit 1
+fi
