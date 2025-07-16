@@ -117,6 +117,12 @@ void show_menu() {
     printf(COLOR_YELLOW "Seleccione una opción: " COLOR_RESET);
 }
 
+void perform_update_and_exit() {
+    perform_update();
+    printf("\n");
+    exit(EXIT_SUCCESS);
+}
+
 int main() {
     // Verificar que el directorio es un repo git
     if (!is_git_repo(REPO_PATH)) {
@@ -140,7 +146,7 @@ int main() {
                 char confirm;
                 scanf(" %c", &confirm);
                 if (confirm == 's' || confirm == 'S') {
-                    perform_update();
+                    perform_update_and_exit(); // Esta función ahora maneja la salida
                 } else {
                     printf(COLOR_YELLOW "Actualización cancelada." COLOR_RESET "\n");
                 }
@@ -153,6 +159,6 @@ int main() {
         }
     }
     
-    printf(COLOR_GREEN "Programa terminado." COLOR_RESET "\n");
+    printf("\n");
     return EXIT_SUCCESS;
 }
